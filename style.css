@@ -390,3 +390,85 @@ body {
         background: white;
     }
 }
+
+/* Inclusão de estilo para ajuste do tamanho das imagens */
+
+/* Estilos para as imagens dos pratos */
+.menu-item img.logo {
+    width: 100%;
+    max-width: 280px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-item:hover img.logo {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Container especial para imagens - máximo 1/4 da tela */
+.menu-item.with-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Ajustes responsivos */
+@media (min-width: 1200px) {
+    .menu-item img.logo {
+        max-width: 280px; /* Limita a 1/4 da tela em desktops grandes */
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    .menu-item img.logo {
+        max-width: 240px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .menu-item img.logo {
+        max-width: 200px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu-item img.logo {
+        max-width: 100%;
+        height: 180px;
+        margin-bottom: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-item img.logo {
+        height: 150px;
+        max-width: 100%;
+    }
+}
+
+/* Ajuste no grid para itens com imagens */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
