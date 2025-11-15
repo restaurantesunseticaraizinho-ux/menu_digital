@@ -1,0 +1,392 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2c5f8d;
+    --secondary-color: #d4915d;
+    --accent-color: #f4a460;
+    --text-dark: #2d2d2d;
+    --text-light: #ffffff;
+    --bg-light: #fef9f3;
+    --bg-overlay: rgba(255, 255, 255, 0.95);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background: linear-gradient(135deg, #f4a460 0%, #d4915d 25%, #2c5f8d 75%, #1a3d5c 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat;
+    opacity: 0.3;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #f8f0e3 0%, #fef9f3 50%, #f5e6d3 100%);
+    color: var(--text-dark);
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>');
+    opacity: 0.3;
+}
+
+.logo-container {
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    max-width: 280px;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.restaurant-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.location {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    opacity: 0.85;
+    position: relative;
+    z-index: 1;
+}
+
+.delivery-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25d366;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.delivery-btn:hover {
+    background: #20ba5a;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+}
+
+/* Navigation */
+.category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    padding: 2rem 0;
+    background: var(--bg-overlay);
+    border-radius: 15px;
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+}
+
+.category-btn {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.category-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.category-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow);
+}
+
+/* Main Content */
+.main-content {
+    padding: 2rem 0;
+    min-height: 60vh;
+}
+
+.menu-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.menu-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subsection-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin: 2rem 0 1rem;
+    text-align: center;
+}
+
+.portion-info {
+    text-align: center;
+    font-style: italic;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.menu-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-left-color: var(--accent-color);
+}
+
+.menu-item h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.menu-item .description {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.menu-item .price {
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1a3d5c 100%);
+    color: var(--text-light);
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 3rem;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+    opacity: 0.95;
+}
+
+.whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: #25d366;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-link:hover {
+    background: #20ba5a;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 1.5rem 0;
+    }
+
+    .restaurant-name {
+        font-size: 1.8rem;
+    }
+
+    .location {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .subsection-title {
+        font-size: 1.5rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .category-nav {
+        gap: 0.5rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .category-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .logo {
+        max-width: 200px;
+    }
+
+    .delivery-btn {
+        font-size: 1rem;
+        padding: 0.875rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 1.25rem 0;
+    }
+
+    .logo-container {
+        margin-bottom: 0.75rem;
+    }
+
+    .restaurant-name {
+        font-size: 1.5rem;
+    }
+
+    .location {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .logo {
+        max-width: 160px;
+    }
+
+    .delivery-btn {
+        font-size: 0.9rem;
+        padding: 0.75rem 1.25rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .category-nav,
+    .delivery-btn {
+        display: none;
+    }
+
+    .menu-section {
+        display: block !important;
+        page-break-after: always;
+    }
+
+    body {
+        background: white;
+    }
+}
