@@ -121,6 +121,22 @@ document.addEventListener('DOMContentLoaded', function() {
         nav.appendChild(searchContainer);
     }
 
+    //Inclusão de script para adição de classes menu-image
+
+    // Adicionar alt text automaticamente às imagens que não têm
+document.addEventListener('DOMContentLoaded', function() {
+    const menuImages = document.querySelectorAll('.menu-item img.menu-image');
+    
+    menuImages.forEach(img => {
+        // Adicionar alt text se não existir ou estiver vazio
+        if (!img.alt || img.alt === '') {
+            const menuItem = img.closest('.menu-item');
+            const title = menuItem.querySelector('h3').textContent;
+            img.alt = title;
+        }
+    });
+});
+
     // Uncomment to enable search functionality
     // createSearchBar();
 });
