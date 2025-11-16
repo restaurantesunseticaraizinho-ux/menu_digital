@@ -396,8 +396,8 @@ body {
 /* Estilos para as imagens dos pratos */
 .menu-item img.menu-image {
     width: 100%;
-    max-width: 280px;
-    height: 200px;
+    max-width: 364px;
+    height: 260px;
     object-fit: cover;
     border-radius: 12px;
     margin-bottom: 1rem;
